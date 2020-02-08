@@ -1,0 +1,36 @@
+<div>
+  <mat-card class="example-card">
+    <!-- <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header> -->
+    <img
+      mat-card-image
+      src="{{ partyData.clubLogo }}"
+      alt="club logo"
+      class="image"
+    />
+    <mat-card-content>
+      <h3 class="title">{{ partyData.title }}</h3>
+      <p class="description">
+        <i class="material-icons icon">
+          place
+        </i>
+        <span class="description__text">{{ partyData.location }}</span>
+      </p>
+      <p class="description">
+        <i class="material-icons icon">
+          schedule
+        </i>
+        <span class="description__text"
+          >{{ partyData.date }} | {{ partyData.time }}</span
+        >
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions class="actions">
+      <button (click)="onGoingClick()" mat-button>I'M GOING</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,39 @@
+$color-background: #673ab7;
+
+.example-card {
+  max-width: 200px;
+  min-height: 410px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.image {
+  margin-bottom: 0;
+}
+
+.description {
+  display: flex;
+  align-items: center;
+  margin-left: -5px;
+
+  &__text {
+    font-size: 12px;
+    font-style: italic;
+  }
+}
+
+.icon {
+  color: $color-background;
+  margin-right: 8px;
+}
+
+.actions {
+  text-align: center;
+}
+
+h3.title {
+  margin-top: 30px;
+}

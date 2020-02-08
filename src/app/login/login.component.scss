@@ -1,0 +1,42 @@
+$color-error: #e74c3c;
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: $color-error;
+
+  &__message {
+    font-size: 10px;
+    font-style: italic;
+    color: $color-error;
+  }
+}
+
+.input-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 70px;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

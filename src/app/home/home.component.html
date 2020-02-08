@@ -1,0 +1,13 @@
+<div class="container">
+  <app-search (queryChange)="onQueryChange($event)"></app-search>
+  <div
+    class="events-container"
+    *ngIf="clubEvents$ | async | eventFilter: searchTerm as clubEvents"
+  >
+    <app-club
+      *ngFor="let clubEvent of clubEvents"
+      [partyData]="clubEvent"
+      (goingClick)="onGoingClick($event)"
+    ></app-club>
+  </div>
+</div>
