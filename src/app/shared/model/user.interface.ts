@@ -10,3 +10,9 @@ export interface AuthenticatedUser {
   lastName: string;
   token: string;
 }
+
+export interface LocalStorageUser {
+  username: string;
+  password: string;
+  id: number;
+}

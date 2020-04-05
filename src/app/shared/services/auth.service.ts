@@ -2,14 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User, AuthenticatedUser } from '../model/user.interface';
 import { ErrorMessage } from '../model/error.interface';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticationService {
-  private baseUrl = '/api/users';
+  baseUrl = '/api/users';
+  isAuth: BehaviorSubject<boolean>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.isAuth = new BehaviorSubject(!!localStorage.getItem('users'));
+  }
 
   login(userData: User) {
     return this.http.post<AuthenticatedUser | ErrorMessage>(
@@ -18,14 +22,20 @@ export class AuthenticationService {
     );
   }
 
+  logout() {
+    localStorage.removeItem('eventsHistory');
+    this.setAuthStatus(false);
+  }
+
   register(userData: User) {
-    console.log('usao u register');
     return this.http.post(`${this.baseUrl}/register`, userData);
   }
 
-  isAuthenticated(): boolean {
-    return localStorage.getItem('isAuthenticated') === 'true';
+  isAuthenticated(): Observable<boolean> {
+    return this.isAuth.asObservable();
   }
 
-  
+  setAuthStatus(val): void {
+    this.isAuth.next(val);
+  }
 }

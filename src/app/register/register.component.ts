@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
@@ -10,9 +10,9 @@ import { ErrorMessage } from '../shared/model/error.interface';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   form: FormGroup;
 
   private subscriptions = new Subscription();
@@ -67,10 +67,10 @@ export class RegisterComponent implements OnInit {
       {
         username: ['', [Validators.required]],
         password: ['', [Validators.required]],
-        confirmPassword: ['', [Validators.required]]
+        confirmPassword: ['', [Validators.required]],
       },
       {
-        validator: MustMatch('password', 'confirmPassword')
+        validator: MustMatch('password', 'confirmPassword'),
       }
     );
   }

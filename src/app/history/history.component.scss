@@ -1,0 +1,13 @@
+.container {
+  padding: 20px;
+  .events {
+    max-width: 800px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -8px;
+
+    app-club {
+      margin: 8px;
+    }
+  }
+}

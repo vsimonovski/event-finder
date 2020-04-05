@@ -17,6 +17,7 @@ import { AuthGuardService } from './shared/guards/auth.guard';
 import { SearchComponent } from './search/search.component';
 import { ClubComponent } from './club/club.component';
 import { EventFilterPipe } from './shared/pipes/event.pipe';
+import { GoingFilterPipe } from './shared/pipes/going.pipe';
 import { HistoryComponent } from './history/history.component';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -29,8 +30,9 @@ import { ProfileComponent } from './profile/profile.component';
     SearchComponent,
     ClubComponent,
     EventFilterPipe,
+    GoingFilterPipe,
     HistoryComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +41,9 @@ import { ProfileComponent } from './profile/profile.component';
     BrowserAnimationsModule,
     AngularMaterialModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
   ],
   providers: [fakeBackendProvider, AuthGuardService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

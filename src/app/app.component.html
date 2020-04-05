@@ -1,6 +1,9 @@
 <mat-toolbar color="primary" class="app-header">
-  <div class="nav-tool-items" [class.--justify-flex-end]="!isAuthenticated">
-    <div *ngIf="isAuthenticated">
+  <div
+    class="nav-tool-items"
+    [class.--justify-flex-end]="!(isAuthenticated$ | async)"
+  >
+    <div *ngIf="isAuthenticated$ | async">
       <a mat-button [routerLink]="['']" routerLinkActive="mat-accent" router
         >Home</a
       >
@@ -12,7 +15,7 @@
       >
     </div>
 
-    <div>
+    <div *ngIf="!(isAuthenticated$ | async)">
       <a
         mat-button
         [routerLink]="['/login']"
@@ -23,6 +26,10 @@
       <a mat-button [routerLink]="['/register']" routerLinkActive="mat-accent"
         >Register</a
       >
+    </div>
+
+    <div *ngIf="isAuthenticated$ | async">
+      <a mat-button (click)="logOut()" [routerLink]="['/login']">Log out</a>
     </div>
   </div>
 </mat-toolbar>

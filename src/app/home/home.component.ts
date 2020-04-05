@@ -7,11 +7,13 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   clubEvents$: Observable<ClubEvent[]>;
   searchTerm: string;
+  filterItems: ClubEvent[] =
+    JSON.parse(localStorage.getItem('eventsHistory')) || [];
 
   constructor(
     private eventService: EventService,
@@ -27,10 +29,12 @@ export class HomeComponent implements OnInit {
   }
 
   onGoingClick(value: ClubEvent) {
-    this.toastr.success(
-      '',
-      `${value.title}@${value.clubName} succesfuly reserved`,
-      {}
-    );
+    if (value.isGoing) {
+      this.filterItems = [...this.filterItems, value];
+    } else {
+      this.filterItems = this.filterItems.filter(
+        (el) => el.title !== value.title
+      );
+    }
   }
 }

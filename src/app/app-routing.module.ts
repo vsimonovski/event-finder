@@ -12,16 +12,24 @@ const routes: Routes = [
     path: '',
     pathMatch: 'full',
     component: HomeComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'history', component: HistoryComponent },
-  { path: 'profile', component: ProfileComponent }
+  {
+    path: 'history',
+    component: HistoryComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,1 +1,9 @@
-<p>history works!</p>
+<div class="container">
+  <h3 class="title">Upcoming events:</h3>
+  <div class="events">
+    <app-club
+      *ngFor="let clubEvent of events"
+      [partyData]="clubEvent"
+    ></app-club>
+  </div>
+</div>
